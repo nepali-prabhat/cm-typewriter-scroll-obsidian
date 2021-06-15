@@ -6,7 +6,7 @@ CodeMirror.commands.scrollSelectionToCenter = function (cm) {
     var charCoords = cm.charCoords(cursor, "local");
     var top = charCoords.top;
     var halfLineHeight = (charCoords.bottom - top) / 2;
-    var halfWindowHeight = cm.getWrapperElement().offsetHeight / 2;
+    var halfWindowHeight = cm.getWrapperElement().offsetHeight / 2 - 200;
     var scrollTo = Math.round((top - halfWindowHeight + halfLineHeight));
     cm.scrollTo(null, scrollTo);
 };
@@ -56,7 +56,7 @@ function onCursorActivity(cm) {
     }
 }
 function onRefresh(cm) {
-    const halfWindowHeight = cm.getWrapperElement().offsetHeight / 2;
+    const halfWindowHeight = cm.getWrapperElement().offsetHeight / 2 - 200;
     const linesEl = cm.getScrollerElement().querySelector('.CodeMirror-lines');
     linesEl.style.paddingTop = `${halfWindowHeight}px`;
     linesEl.style.paddingBottom = `${halfWindowHeight}px`; // Thanks @walulula!
